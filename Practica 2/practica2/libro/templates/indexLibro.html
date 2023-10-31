@@ -1,0 +1,99 @@
+{% extends "layout.html"%}
+ 
+{% block content %}
+<div>
+    <center>
+        <h1>Lista Persona</h1>
+        <br>
+    <a href="nuevocliente">
+        agregar
+    </a>
+    <br>
+    <br>
+    <div class="col-lg-4 col-md-6">
+        <table border="1" class="table table-success table-striped-columns">
+            <thead>
+                <tr>
+                    <td scope="col">id</td>
+                    <td scope="col">nombre</td>
+                    <td scope="col">email</td>
+                    <td scope="col">editar</td>
+                    <td scope="col">detalle</td>
+                    <td scope="col">eliminar</td>
+                </tr>
+            </thead>
+            <body>
+                {% for cliente in clientes %}
+                <tr>
+                    <td scope="col">{{ cliente.id }}</td>
+                    <td scope="col">{{ cliente.nombre }}</td>
+                    <td scope="col">{{ cliente.email }}</td>
+                    <!-- <td scope="col"><a href="editarCliente/{{cliente.id}}">editar</a></td>
+                    <td scope="col"><a href="detalleCliente/{{cliente.id}}">detalle</a></td>
+                    <td scope="col"><a href="eliminarCliente/{{cliente.id}}">eliminar</a></td> -->
+                </tr>
+                {% endfor %}
+            </body>
+        </table>
+    </div>
+
+    <br>
+    
+    <div class="col-lg-4 col-md-6">
+        <table border="1" class="table table-success table-striped-columns">
+            <thead>
+                <tr>
+                    <td scope="col">id</td>
+                    <td scope="col">titulo</td>
+                    <td scope="col">edicion</td>
+                    <td scope="col">editar</td>
+                    <td scope="col">detalle</td>
+                    <td scope="col">eliminar</td>
+                </tr>
+            </thead>
+            <body>
+                {% for libro in libros %}
+                <tr>
+                    <td scope="col">{{ libro.id }}</td>
+                    <td scope="col">{{ libro.titulo }}</td>
+                    <td scope="col">{{ libro.edicion }}</td>
+                    <!-- <td scope="col"><a href="editarLibro/{{libro.id}}">editar</a></td>
+                    <td scope="col"><a href="detalleLibro/{{libro.id}}">detalle</a></td>
+                    <td scope="col"><a href="eliminarLibro/{{libro.id}}">eliminar</a></td> -->
+                </tr>
+                {% endfor %}
+            </body>
+        </table>
+    </div>
+
+    <br>
+
+    
+    <div class="col-lg-4 col-md-6">
+        <table border="1" class="table table-success table-striped-columns">
+            <thead>
+                <tr>
+                    <td scope="col">id</td>
+                    <td scope="col">nombre</td>
+                    <td scope="col">editar</td>
+                    <td scope="col">detalle</td>
+                    <td scope="col">eliminar</td>
+                </tr>
+            </thead>
+            <body>
+                {% for autor in autores %}
+                <tr>
+                    <td scope="col">{{ autor.id }}</td>
+                    <td scope="col">{{ autor.nombre }}</td>
+                    <!-- <td scope="col"><a href="editarAutor/{{autor.id}}">editar</a></td>
+                    <td scope="col"><a href="detalleAutor/{{autor.id}}">detalle</a></td>
+                    <td scope="col"><a href="eliminarAutor/{{autor.id}}">eliminar</a></td> -->
+                </tr>
+                {% endfor %}
+            </body>
+        </table>
+    </div>
+
+    </center>
+</div>
+{% endblock %}
