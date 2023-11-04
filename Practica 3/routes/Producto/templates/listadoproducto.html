@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{  url_for('static', filename='css/main.css')  }}">
+    <title>Listado Producto</title>
+</head>
+<body>
+    <div>
+        <a href="{{url_for('appproducto.formularioproducto')}}">Agregar</a>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Editar</th>
+                    <th>Consultar</th>
+                    <th>Borrar</th>
+                </tr>
+            </thead>
+            <body>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{producto.id}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.descripcion}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td><a href="{{ url_for('appproducto.editarproducto', id=producto.id) }}">Editar</a></td>
+                    <td><a href="{{ url_for('appproducto.consultarproducto', id=producto.id) }}"">Consultar</a></td>
+                    <td><a href="{{ url_for('appproducto.eliminarproducto', id=producto.id) }}">Borrar</a></td>
+                </tr>
+                {% endfor %}
+            </body>
+        </table>
+    </div>
+</body>
+</html>

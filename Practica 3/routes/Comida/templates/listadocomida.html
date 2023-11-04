@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{  url_for('static', filename='css/main.css')  }}">
+    <title>Listado comida</title>
+</head>
+<body>
+    <div>
+        <a href="{{url_for('appcomida.formularioproducto')}}">Agregar comida</a>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Precio</th>
+                    <th>Nombre</th>
+                    <th>Editar</th>
+                    <th>Consultar</th>
+                    <th>Borrar</th>
+                </tr>
+            </thead>
+            <body>
+                {% for comida in comidas %}
+                <tr>
+                    <td>{{comida.id}}</td>
+                    <td>{{comida.precio}}</td>
+                    <td>{{comida.nombre}}</td>
+                    <td><a href="{{ url_for('appcomida.editarcomida', id=comida.id) }}">Editar</a></td>
+                    <td><a href="{{ url_for('appcomida.consultarcomida', id=comida.id) }}"">Consultar</a></td>
+                    <td><a href="{{ url_for('appcomida.eliminarcomida', id=comida.id) }}">Borrar</a></td>
+                </tr>
+                {% endfor %}
+            </body>
+        </table>
+    </div>
+</body>
+</html>
