@@ -5,11 +5,11 @@ from flask_migrate import Migrate
 from flask_cors import CORS
 from encriptador import bcrypt
 from routes.tecnico.tecnico import apptecnico
-#from routes.jugador.jugador import appjugador
+from routes.user.user import appuser
 import logging
 
 app = Flask(__name__)
-#app.register_blueprint(appjugador)
+app.register_blueprint(appuser)
 app.register_blueprint(apptecnico)
 app.config.from_object(BasicConfig)
 CORS(app)
