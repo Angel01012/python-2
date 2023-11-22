@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado tecnicos</title>
+</head>
+<body>
+    <a href="{{ url_for('apptecnico.agregar_tecnico') }}">agregar tecnico</a>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nombre</th>
+                <th>apellido</th>
+                <th>Consultar</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <body>
+            {% for tecnico in tecnicos %}
+            <tr>
+                <td>{{tecnico.id}}</td>
+                <td>{{tecnico.nombre}}</td>
+                <td>{{tecnico.apellido}}</td>
+                <td><a href="{{ url_for('apptecnico.detalles_tecnico', id=tecnico.id) }}">Editar</a></td>
+                <td><a href="{{ url_for('apptecnico.modificar_tecnico', id=tecnico.id) }}">Consultar</a></td>
+            </tr>
+            {% endfor %}
+        </body>
+    </table>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        {% for tecnico in tecnicos %}
+            <h1 class="display-4">id {{tecnico.id}}</h1>
+            <h1 class="display-4">nombre {{tecnico.nombre}}</h1>
+            <h1 class="display-4">apellido {{tecnico.apellido}}</h1>
+
+            <a href="{{url_for('apptecnico.listado_tecnicos')}}">Listado de Tecnico</a>
+        {% endfor %}
+    </body>
+</body>
+</html>
