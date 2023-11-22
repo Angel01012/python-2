@@ -1,52 +1,52 @@
 from flask import Blueprint,request,redirect,render_template,url_for,jsonify
-from models import Producto
+from models import Cliente
 from forms import ProductosForm
 from app import db
 
-appproducto = Blueprint('appproducto',__name__,template_folder="templates")
+appcliente = Blueprint('appproducto',__name__,template_folder="templates")
 
-@appproducto.route('/')
+@appcliente.route('/')
 def inicio():
-    return render_template("index.html")
-@appproducto.route('/listadoproducto')
-def listadoproducto():
-    productos = Producto.query.all()
-    return render_template('listadoproducto.html',productos=productos)
+    return render_template("inicio.html")
+@appcliente.route('/listadoCliente')
+def listadocliente():
+    cliente = Cliente.query.all()
+    return render_template('listadoCliente.html',cliente=cliente)
 
-@appproducto.route('/formularioproducto',methods=["GET","POST"])
-def formularioproducto():
-    producto = Producto()
-    productoform = ProductosForm(obj=producto)
+@appcliente.route('/formularioCliente',methods=["GET","POST"])
+def formularioCliente():
+    cliente = Cliente()
+    clienteform = ProductosForm(obj=cliente)
     if request.method == "POST":
-        if productoform.validate_on_submit():
-            productoform.populate_obj(producto)
-            db.session.add(producto)
+        if clienteform.validate_on_submit():
+            clienteform.populate_obj(cliente)
+            db.session.add(cliente)
             db.session.commit()
-            return redirect(url_for('appproducto.listadoproducto'))
-    return render_template('formularioproducto.html',forma=productoform)
+            return redirect(url_for('appcliente.listadoCliente'))
+    return render_template('formularioCliente.html',forma=clienteform)
 
-@appproducto.route('/editarproducto/<int:id>',methods=["GET","POST"])
-def editarproducto(id):
-    producto = Producto.query.get_or_404(id)
-    productoform = ProductosForm(obj=producto)
+@appcliente.route('/editarCliente/<int:id>',methods=["GET","POST"])
+def editarCliente(id):
+    cliente = Cliente.query.get_or_404(id)
+    clienteform = ProductosForm(obj=cliente)
     if request.method == "POST":
-        if productoform.validate_on_submit():
-            productoform.populate_obj(producto)
+        if clienteform.validate_on_submit():
+            clienteform.populate_obj(cliente)
             db.session.commit()
-            return redirect(url_for('appproducto.listadoproducto'))
-    return render_template('editarproducto.html',forma=productoform)
+            return redirect(url_for('appcliente.listadoCliente'))
+    return render_template('editarCliente.html',forma=clienteform)
 
-@appproducto.route('/consultarproducto/<int:id>',methods=["GET","POST"])
-def consultarproducto(id):
-    producto = Producto.query.get_or_404(id)
-    productos = [producto]
+@appcliente.route('/consultarCliente/<int:id>',methods=["GET","POST"])
+def consultarCliente(id):
+    cliente = Cliente.query.get_or_404(id)
+    clientes = [cliente]
     #productoform = ProductosForm(obj=producto)
     
-    return render_template('consultaproducto.html',productos=productos)
+    return render_template('consultaproducto.html',clientes=cliente)
 
-@appproducto.route('/eliminarproducto/<int:id>', methods=["POST","GET"])
-def eliminarproducto(id):
-    producto = Producto.query.get_or_404(id)
-    db.session.delete(producto)
+@appcliente.route('/eliminarCliente/<int:id>', methods=["POST","GET"])
+def eliminarCliente(id):
+    cliente = Cliente.query.get_or_404(id)
+    db.session.delete(cliente)
     db.session.commit()
-    return redirect(url_for('appproducto.listadoproducto'))
+    return redirect(url_for('appcliente.listadoCliente'))
