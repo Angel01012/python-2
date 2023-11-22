@@ -1,9 +1,9 @@
 from flask import Blueprint,request,redirect,render_template,url_for,jsonify
 from models import Cliente
-from forms import ProductosForm
+from forms import clienteForm
 from app import db
 
-appcliente = Blueprint('appproducto',__name__,template_folder="templates")
+appcliente = Blueprint('appcliente',__name__,template_folder="templates")
 
 @appcliente.route('/')
 def inicio():
@@ -16,7 +16,7 @@ def listadocliente():
 @appcliente.route('/formularioCliente',methods=["GET","POST"])
 def formularioCliente():
     cliente = Cliente()
-    clienteform = ProductosForm(obj=cliente)
+    clienteform = clienteForm(obj=cliente)
     if request.method == "POST":
         if clienteform.validate_on_submit():
             clienteform.populate_obj(cliente)
@@ -28,7 +28,7 @@ def formularioCliente():
 @appcliente.route('/editarCliente/<int:id>',methods=["GET","POST"])
 def editarCliente(id):
     cliente = Cliente.query.get_or_404(id)
-    clienteform = ProductosForm(obj=cliente)
+    clienteform = clienteForm(obj=cliente)
     if request.method == "POST":
         if clienteform.validate_on_submit():
             clienteform.populate_obj(cliente)
@@ -40,9 +40,8 @@ def editarCliente(id):
 def consultarCliente(id):
     cliente = Cliente.query.get_or_404(id)
     clientes = [cliente]
-    #productoform = ProductosForm(obj=producto)
     
-    return render_template('consultaproducto.html',clientes=cliente)
+    return render_template('consultaCliente.html',clientes=cliente)
 
 @appcliente.route('/eliminarCliente/<int:id>', methods=["POST","GET"])
 def eliminarCliente(id):
