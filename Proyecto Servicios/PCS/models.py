@@ -2,7 +2,7 @@ from app import db
 from sqlalchemy import Numeric
 import jwt
 import datetime
-from config import BaseConfig
+from config import BasicConfig
 from app import db,bcrypt
 
 #tabla ROL
@@ -30,7 +30,7 @@ class User(db.Model):
     def __init__(self,email,password,admin=False) -> None:
         self.email=email
         self.password=bcrypt.generate_password_hash(
-            password,BaseConfig.BCRYPT_LOG_ROUNDS
+            password,BasicConfig.BCRYPT_LOG_ROUNDS
         ).decode()
 
         self.registered_on=datetime.datetime.now()
@@ -47,7 +47,7 @@ class User(db.Model):
             print("PAYLOAD",payload)
             return jwt.encode(
                 payload,
-                BaseConfig.SECRET_KEY,
+                BasicConfig.SECRET_KEY,
                 algorithm='HS256'
             )
         except Exception as e:
@@ -58,7 +58,7 @@ class User(db.Model):
     @staticmethod
     def decode_auth_token(auth_token):
         try:
-            payload = jwt.decode(auth_token,BaseConfig.SECRET_KEY,algorithms=['HS256'])
+            payload = jwt.decode(auth_token,BasicConfig.SECRET_KEY,algorithms=['HS256'])
             return payload
         except jwt.ExpiredSignatureError as e:
             return 'Signature Expired Please log in again'
@@ -96,3 +96,12 @@ class Cliente(db.Model):
     direccion = db.Column(db.String(300))
     RFC = db.Column(db.String(30),unique = True)
     tipo_clientes_id=db.Column(db.Integer,db.ForeignKey('tipo_cliente.id'))
+
+class Images(db.Model):
+    __tablename__='user_images'
+    id_images = db.Column(db.Integer,primary_key=True)
+    type = db.Column(db.String(128),nullable=False)
+    data = db.Column(db.LargeBinary,nullable=False)
+    rendered_data=db.Column(db.Text,nullable=False)
+    user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
+    region=db.relationship('User',backref='users')
