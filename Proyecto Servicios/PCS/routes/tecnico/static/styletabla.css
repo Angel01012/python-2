@@ -1,0 +1,37 @@
+table { 
+    border-collapse: collapse;
+    width: 100%;
+    background-color: rgb(187, 220, 255,0.8);
+}
+    th, td {
+padding: 8px;
+text-align: left;
+border-bottom: 1px solid #bbbaba;
+}
+#tr:hover {
+    background-color: rgb(84, 167, 255);
+    background: linear-gradient(rgb(187, 220, 255,0.8),rgb(0, 115, 255,0.8));
+    color: black;
+}
+thead{
+background-color: #3a3a3a;
+color:white;
+}
+a {
+    border-bottom: none;
+    text-decoration: none;
+display: inline-block;
+padding: 10px 20px;
+background-color: rgb(52, 52, 52);
+color: white;
+border-radius: 4px;
+text-decoration: none;
+}
+a:hover{
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(rgb(137, 137, 137),rgb(44, 44, 44));
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+}

@@ -45,7 +45,7 @@ def tokenCheck(f):
         return f(info['data'],*args,**kwargs)
     return verificar
 
-def verificar(token):
+def Verificar(token):
         if not token:
             return jsonify({'message':'Token no encontrado'})
         try:

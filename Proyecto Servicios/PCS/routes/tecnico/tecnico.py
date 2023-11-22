@@ -9,7 +9,7 @@ apptecnico=Blueprint('apptecnico',__name__,template_folder="templates")
 
 @apptecnico.route('/')
 def inicio():
-    render_template("index.html")
+    return render_template("inicio.html")
 
 @apptecnico.route('/listadotecnicos')
 def listado_tecnicos():
