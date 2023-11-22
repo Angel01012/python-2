@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{  url_for('static', filename='styletabla.css')  }}">
 </head>
 <body>
-    <a href="{{ url_for('apptecnico.agregar_tecnico') }}">agregar tecnico</a>
     <table>
         <thead>
             <tr>
@@ -30,5 +29,6 @@
             {% endfor %}
         </body>
     </table>
+    <a href="{{ url_for('apptecnico.agregar_tecnico') }}">agregar tecnico</a>
 </body>
 </html>

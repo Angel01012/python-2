@@ -24,7 +24,8 @@ text-align: center;
 } 
 
 nav {
-background-color: #fffb00;
+background-color: #060601;
+color: black;
 overflow: hidden;  
 display: flex;
 justify-content: center;
@@ -40,7 +41,7 @@ float: left;
 }
 
 nav a:hover {
-    background: linear-gradient(yellow, yellowgreen);
+    background: linear-gradient(rgb(0, 0, 205), rgb(104, 104, 255));
 color: rgb(0, 0, 0);
 }
 

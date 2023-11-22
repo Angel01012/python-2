@@ -1,15 +1,25 @@
 table { 
     border-collapse: collapse;
     width: 100%;
-    background-color: rgb(187, 220, 255,0.8);
+    background: #1d74ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right,blue, aqua);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right,  #4364F7 #4364F7); 
+    color: white;
 }
     th, td {
 padding: 8px;
 text-align: left;
 border-bottom: 1px solid #bbbaba;
 }
+th{
+    background-color: #1d74ff;
+}
+td{
+    background-color: #60bdff;
+    color: black;
+}
 #tr:hover {
-    background-color: rgb(84, 167, 255);
+    background-color: rgb(44, 145, 252);
     background: linear-gradient(rgb(187, 220, 255,0.8),rgb(0, 115, 255,0.8));
     color: black;
 }
@@ -22,7 +32,7 @@ a {
     text-decoration: none;
 display: inline-block;
 padding: 10px 20px;
-background-color: rgb(52, 52, 52);
+background-color:blue;
 color: white;
 border-radius: 4px;
 text-decoration: none;
@@ -30,7 +40,7 @@ text-decoration: none;
 a:hover{
     display: inline-block;
     padding: 10px 20px;
-    background: linear-gradient(rgb(137, 137, 137),rgb(44, 44, 44));
+    background: linear-gradient(blue, aqua);
     color: white;
     border-radius: 4px;
     text-decoration: none;
