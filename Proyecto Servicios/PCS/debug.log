@@ -850,3 +850,10 @@ INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:09:47] "GET /static/styletabla.css H
 INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:10:04] "GET /listadotecnicos HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:10:04] "GET /static/styletabla.css HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:10:23] "[33mGET /login HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:10:59] "GET /agregartecnico HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:11:38] "GET /listadotecnicos HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:11:39] "[36mGET /static/styletabla.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:16:24] "[33mGET /login HTTP/1.1[0m" 404 -
