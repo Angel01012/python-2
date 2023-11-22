@@ -8,12 +8,7 @@
   </head>
   <body>
     <div class="container">
-      <form
-        action="./insertar.php"
-        id="idFormulario"
-        method="post"
-        class="form"
-      >
+      <form id="idFormulario" class="form" >
         <div class="form-header">
           <h1>Ingresa los siguientes datos:</h1>
         </div>
@@ -21,12 +16,7 @@
           <div class="form-group">
             <input type="text" name="Nombre" id="Nombre" placeholder="Nombre" />
             <input type="text" name="Apellido" id="Apellido" placeholder="Apellido" />
-            <input
-              type="text"
-              name="Usuario"
-              id="Usuario"
-              placeholder="Usuario"
-            />
+            <input type="text" name="Usuario" id="Usuario" placeholder="Usuario"/>
           </div>
           <div class="form-group">
             <input type="text" name="Correo" id="Correo" placeholder="Correo" />
@@ -57,24 +47,34 @@
     ></script>
   </body>
   <script>
-    document
-      .getElementById("btnAgregar")
-      .addEventListener("click", async () => {
-        var datosFormulario = new FormData(
-          document.getElementById("idFormulario")
-        );
-        let respuesta = await fetch("mysqli/conexion.php", {
-          method: "POST",
-          body: datosFormulario,
-        });
-        let dato = await respuesta.json();
-        document.getElementById("Nombre").value = dato.Nombre;
-        document.getElementById("Telefono").value = dato.Telefono;
-        document.getElementById("Edad").value = dato.Edad;
-        document.getElementById("Correo").value = dato.Correo;
-        document.getElementById("Contra").value = dato.Contra;
-        document.getElementById("ConfirmarContra").value = dato.ConfirmarContra;
-      });
+     const loginForm = document.querySelector('#idFormulario')
+        const loginButton = document.querySelector('#btnAceptar')
+        loginButton.addEventListener('click',(e)=>{
+            e.preventDefault();
+            const Nombre = document.querySelector('#Nombre').value;
+            const email = document.querySelector('#Correo').value;
+            const password = document.querySelector('#Contra').value;
+            const Apellido = document.querySelector('#Apellido').value;
+
+            
+            fetch('/sign',{
+                method:'POST',
+                headers:{
+                   'Content-Type':'application/json'
+                },
+                body: JSON.stringify({
+                    'email':email,
+                    'password':password,
+                    'nombre':Nombre,
+                    'apellido':Apellido
+                })
+            }).then(response => response.json())
+            .then(data =>{
+                localStorage.setItem('token',data.auth_token)
+                console.log(data)
+                window.location.href='/main'
+            })
+        })
     /*
 document.getElementById("btnAgregar").addEventListener("click",() =>{
   fetch ('mysqli/conexion.php')
