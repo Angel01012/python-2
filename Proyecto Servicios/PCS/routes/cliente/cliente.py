@@ -1,6 +1,6 @@
 from flask import Blueprint,request,redirect,render_template,url_for,jsonify
 from models import Cliente
-from forms import ClientesForm
+from forms import clienteForm
 from app import db
 
 appcliente = Blueprint('appcliente',__name__,template_folder="templates")
@@ -16,7 +16,7 @@ def listadocliente():
 @appcliente.route('/formularioCliente',methods=["GET","POST"])
 def formularioCliente():
     cliente = Cliente()
-    clienteform = ClientesForm(obj=cliente)
+    clienteform = clienteForm(obj=cliente)
     if request.method == "POST":
         if clienteform.validate_on_submit():
             clienteform.populate_obj(cliente)
@@ -28,7 +28,7 @@ def formularioCliente():
 @appcliente.route('/editarCliente/<int:id>',methods=["GET","POST"])
 def editarCliente(id):
     cliente = Cliente.query.get_or_404(id)
-    clienteform = ClientesForm(obj=cliente)
+    clienteform = clienteForm(obj=cliente)
     if request.method == "POST":
         if clienteform.validate_on_submit():
             clienteform.populate_obj(cliente)
