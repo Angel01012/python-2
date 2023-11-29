@@ -9,7 +9,7 @@ apptecnico=Blueprint('apptecnico',__name__,template_folder="templates")
 
 @apptecnico.route('/')
 def inicio():
-    return render_template("inicio.html")
+    return render_template("index.html")
 
 @apptecnico.route('/listadotecnicos')
 def listado_tecnicos():
@@ -46,7 +46,3 @@ def modificar_tecnico(id):
         db.session.commit()
         return redirect(url_for('apptecnico.listado_tecnicos'))
     return render_template('puttecnicos.html',tecnico = tecnico)
-
-@apptecnico.route('/modificartecnico',methods=["POST"])
-def modificarformu():
-    pass
