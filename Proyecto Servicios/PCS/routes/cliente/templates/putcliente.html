@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<div class = "container">
+  <br />
+  <form action="/modificarcliente/{{cliente.id}}" method="POST" class="row g-3 needs-validation" novalidate>
+   <div class="col-md-5">
+       <label for="validationCustom03" class="form-label">Nombre del cliente ó compañia </label>
+       <input type="text" class="form-control" id="nombre" name = "nombre" required placeholder="Ejemplo: OXXO" value="{{cliente.nombre}}">
+     </div>
+   
+   <div class="col-md-4">
+     <label for="validationCustom02" class="form-label">Telefono del cliente</label>
+     <input type="text" class="form-control" id="telefono" placeholder="867 713 1313" name = "telefono"required value="{{cliente.telefono}}">
+     <div class="valid-feedback">
+       Bien!
+     </div>
+   </div>
+   <br />
+   <div class="col-md-4">
+     <label for="validationCustom01" class="form-label">Email del cliente</label>
+     <input type="text" class="form-control" id="email" name = "email" placeholder="ejemplo@gmail.com" required value="{{cliente.email}}">
+     <div class="valid-feedback">
+       Genia!
+     </div>
+   </div>
+   <div class="col-md-3">
+       <label for="validationCustom01" class="form-label">Direccion del cliente</label>
+       <input type="text" class="form-control" id="direccion" name ="direccion" placeholder="Ejemplo: Reforma #2122" required value="{{cliente.direccion}}">
+       <div class="valid-feedback">
+         Genia!
+       </div>
+   </div>
+   <div class="col-md-3">
+       <label for="validationCustom01" class="form-label">RFC</label>
+       <input type="text" class="form-control" id="RFC" name="RFC" placeholder="RFC Persona fiscal o patronal" required value="{{cliente.RFC}}">
+       <div class="valid-feedback">
+         Genia!
+       </div>
+   </div>
+   <br>
+   <div class="col-md-3">
+    <label for="validationCustom01" class="form-label">Tipo de cliente</label>
+    <select class="form-select" aria-label="{{cliente.tipo_clientes_id}}"id="tipo_clientes_id" name="tipo_clientes_id">
+      <option selected value="valor x" aria-placeholder="Tipo Ciente">Tipo de cliente</option>
+      {% for Tipo_Cliente in tipo_clientes %}
+      <option value="{{ Tipo_Cliente.id }}">{{ Tipo_Cliente.nombre }}</option>
+      {% endfor %}
+    </select>
+   </div>
+     <br />
+     <br />
+
+   <div class="col-11">
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>
+ </form>
+
+  
+</div>
+
+{%endblock%}

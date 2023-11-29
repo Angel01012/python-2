@@ -36,7 +36,7 @@ def login():
             }
             return jsonify(response)
     return jsonify({"message":'Datos incorrectos'})
-#pendiente
+
 @appuser.route('/usuarios',methods=['GET'])
 @tokenCheck
 def getUsers(usuario):

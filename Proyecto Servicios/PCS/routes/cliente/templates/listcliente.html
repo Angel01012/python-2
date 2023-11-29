@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<body>
+
+    <div class="container">
+        <div class="col-md-12">
+            
+            <a class="btn btn-primary" href="{{ url_for('appcliente.agregar_cliente') }}" role="button">agregar cliente</a>
+            <br>
+            <table class="table table-hover">
+                <tr class="table-dark">
+                    <th scope="row">id</th>
+                    <th scope="row">nombre</th>
+                    <th scope="row">telefono</th>
+                    <th scope="row">email</th>
+                    <th scope="row">direccion</th>
+                    <th scope="row">RFC</th>
+                    <th scope="row">Tipo de cliente</th>
+                    <th scope="row">Consultar</th>
+                    <th scope="row">Editar</th>
+                  </tr>
+                <body>
+                    {% for cliente in clientes %}
+                    <tr class="table-dark">
+                        <td>{{cliente.id}}</td>
+                        <td>{{cliente.nombre}}</td>
+                        <td>{{cliente.telefono}}</td>
+                        <td>{{cliente.email}}</td>
+                        <td>{{cliente.direccion}}</td>
+                        <td>{{cliente.RFC}}</td>
+                        <td>{{cliente.tipo_clientes_id}}</td>
+                        <td><a class="btn btn-primary" href="{{ url_for('appcliente.detalles_cliente', id=cliente.id) }}">Consultar</a></td>
+        
+                        <td><a class="btn btn-primary" href="{{ url_for('appcliente.modificar_cliente', id=cliente.id) }}">Editar</a></td>
+                    </tr>
+                    {% endfor %}
+                </body>
+            </table>
+        </div>
+        
+    </div>
+    
+</body>
+
+{%endblock%}

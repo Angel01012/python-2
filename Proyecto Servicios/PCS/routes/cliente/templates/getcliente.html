@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<div class = "container">
+  <br />
+  <div class="jumbotron">
+   <hr class="my-4">
+   <div class="row">
+   <div class="col-lg-6 col-md-12">
+    <body>
+        <br>
+        <br>
+        {% for cliente in clientes %}
+            <h1 class="display-4">id: {{cliente.id}}</h1>
+            <h1 class="display-4">nombre: {{cliente.nombre}}</h1>
+            <h1 class="display-4">telefono: {{cliente.telefono}}</h1>
+            <h1 class="display-4">email: {{cliente.email}}</h1>
+            <h1 class="display-4">direccion: {{cliente.direccion}}</h1>
+            <h1 class="display-4">RFC: {{cliente.RFC}}</h1>
+            <h1 class="display-4">Tipo de cliente: {{cliente.tipo_clientes_id}}</h1>
+        {% endfor %}
+        <a href="{{url_for('appcliente.listado_clientes')}}">Listado de clietes</a>
+    </body>
+   </div>
+   <div class="col-lg-4 col-md-6">
+   </div>
+   <div class="col-lg-4 col-md-6">
+   </div>
+ </div>
+ </div>
+</div>
+{%endblock%}
