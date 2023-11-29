@@ -857,3 +857,123 @@ INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a
  * Running on http://127.0.0.1:5000
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:16:24] "[33mGET /login HTTP/1.1[0m" 404 -
+ERROR:app:Exception on /listadotecnicos [GET]
+Traceback (most recent call last):
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\connections.py", line 779, in _read_bytes
+    data = self._rfile.read(num_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\perez\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 706, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: [WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\connections.py", line 558, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\connections.py", line 822, in _read_query_result
+    result.read()
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\connections.py", line 1200, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\connections.py", line 739, in _read_packet
+    packet_header = self._read_bytes(4)
+                    ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\connections.py", line 785, in _read_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query ([WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\PCS\routes\tecnico\tecnico.py", line 16, in listado_tecnicos
+    tecnicos = Tecnico.query.all()
+               ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2693, in all
+    return self._iter().all()  # type: ignore
+           ^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2847, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2308, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2190, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\orm\context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1416, in execute
+    return meth(
+           ^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1639, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2343, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 922, in do_execute
+    cursor.execute(statement, parameters)
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\connections.py", line 558, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\connections.py", line 822, in _read_query_result
+    result.read()
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\connections.py", line 1200, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\connections.py", line 739, in _read_packet
+    packet_header = self._read_bytes(4)
+                    ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\perez\OneDrive\Escritorio\python-2\Proyecto Servicios\.venv\Lib\site-packages\pymysql\connections.py", line 785, in _read_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query ([WinError 10060] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder)')
+[SQL: SELECT tecnico.id AS tecnico_id, tecnico.nombre AS tecnico_nombre, tecnico.apellido AS tecnico_apellido 
+FROM tecnico]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:30:06] "[35m[1mGET /listadotecnicos HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:30:23] "GET /listadotecnicos HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:30:23] "[36mGET /static/styletabla.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:30:31] "GET /detallestecnico/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Nov/2023 09:30:37] "GET /modificartecnico/1 HTTP/1.1" 200 -
