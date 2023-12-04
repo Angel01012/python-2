@@ -1,0 +1,48 @@
+
+{% extends "layout.html" %}
+
+{%block content%}
+<div class = "container">
+  <br />
+  <a class="btn btn-primary" role="button" href="{{ url_for('appuser.listado_usuarios') }}">Volver</a>
+
+  <div class="jumbotron">
+   <hr class="my-4">
+   <div class="row">
+   <div class="col-lg-6 col-md-12">
+    <body>
+        <br>
+        <br>
+        <div class="col-md-8">
+          <div class="card text-white bg-info mb-3">
+            <div class="card-header">Usuario</div>
+            <div class="card-body">
+              <h3 class="card-title">id: {{usuario.id}}</h3>
+                <h3 class="card-title">email: {{usuario.email}}</h3>
+                <h3 class="card-title">Contra: {{usuario.password}}</h3>
+                <h3 class="card-title">Fecha de registro: {{usuario.registered_on}}</h3>
+                <h3 class="card-title">admin: {{usuario.admin}}</h3>
+                <h3 class="card-title">tecnico id: {{usuario.tecnico_id}}</h3>
+                <h3 class="card-title">rol: {{usuario.rol_id}}</h3>
+
+            </div>        
+
+
+
+    </body>
+   </div>
+
+   <div class="col-lg-4 col-md-6">
+     
+   </div>
+
+   <div class="col-lg-4 col-md-6">
+
+   </div>
+ </div>
+  
+ </div>
+
+
+</div>
+{%endblock%}

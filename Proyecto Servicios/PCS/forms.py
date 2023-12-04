@@ -19,11 +19,12 @@ class userForm(FlaskForm):
 class tiposervicioForm(FlaskForm):
     nombre = StringField('nombre')
 
-class servicioForm():
+class servicioForm(FlaskForm):
     concepto = StringField('concepto')
     costo = StringField('costo')
     tecnico_id = StringField('tecnico_id')
     tipo_servicio_id = StringField('tipo_servicio_id') 
+    cliente_id = StringField('cliente_id')
 
 class tipoclienteForm(FlaskForm):
     nombre = StringField('nombre')

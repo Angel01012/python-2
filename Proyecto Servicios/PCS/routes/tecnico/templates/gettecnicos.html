@@ -4,6 +4,8 @@
 {%block content%}
 <div class = "container">
   <br />
+  <a class="btn btn-primary" role="button" href="{{url_for('apptecnico.listado_tecnicos')}}">Volver</a>
+
   <div class="jumbotron">
    <hr class="my-4">
    <div class="row">
@@ -11,14 +13,17 @@
     <body>
         <br>
         <br>
-        {% for tecnico in tecnicos %}
-        
-            <h1 class="display-4">id {{tecnico.id}}</h1>
-            <h1 class="display-4">nombre {{tecnico.nombre}}</h1>
-            <h1 class="display-4">apellido {{tecnico.apellido}}</h1>
+        <div class="col-md-6">
+          <div class="card text-white bg-info mb-3">
+            <div class="card-header">Tecnico</div>
+            <div class="card-body">
+              <h3 class="card-title">id: {{tecnico.id}}</h3>
+                <h3 class="card-title">nombre: {{tecnico.nombre}}</h3>
+                <h3 class="card-title">apellido: {{tecnico.apellido}}</h3>  
+            </div>        
 
-            <a href="{{url_for('apptecnico.listado_tecnicos')}}">Listado de Tecnico</a>
-        {% endfor %}
+
+
     </body>
    </div>
 

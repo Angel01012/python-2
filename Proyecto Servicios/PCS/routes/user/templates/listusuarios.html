@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<body>
+
+    <div class="container">
+        <div class="col-md-12">
+            
+            <a class="btn btn-primary" href="{{ url_for('appuser.agregar_usuario') }}" role="button">agregar usuario</a>
+            <br>
+            <table class="table table-hover">
+                <tr class="table-dark">
+                    <th scope="row">Id</th>
+                    <th scope="row">Email</th>
+                    <th scope="row">Password</th>
+                    <th scope="row">Fecha registro</th>
+                    <th scope="row">Admin</th>
+                    <th scope="row">Tecnico</th>
+                    <th scope="row">Rol</th>
+                    <th scope="row">Consultar</th>
+                    <th scope="row">Editar</th>
+                  </tr>
+                <body>
+                    {% for usuario in usuarios %}
+                    <tr class="table-dark">
+                        <td>{{usuario.id}}</td>
+                        <td>{{usuario.email}}</td>
+                        <td>{{usuario.password}}</td>
+                        <td>{{usuario.registered_on}}</td>
+                        <td>{{usuario.admin}}</td>
+                        <td>{{usuario.tecnico_id}}</td>
+                        <td>{{usuario.rol_id}}</td>
+                        <td><a class="btn btn-primary" href="{{ url_for('appuser.detalles_usuario', id=usuario.id) }}">Consultar</a></td>
+        
+                        <td><a class="btn btn-primary" href="{{ url_for('appuser.modificar_usuario', id=usuario.id) }}">Editar</a></td>
+                    </tr>
+                    {% endfor %}
+                </body>
+            </table>
+        </div>        
+    </div>
+    
+</body>
+
+{%endblock%}

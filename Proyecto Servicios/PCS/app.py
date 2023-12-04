@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 from database import db
 from config import BasicConfig
 from flask_migrate import Migrate
@@ -8,9 +8,14 @@ from routes.user.user import appuser
 from routes.tecnico.tecnico import apptecnico
 from routes.cliente.cliente import appcliente
 from routes.servicios.servicios import appservicio
+from routes.pdf.pdf import apppdf
 import logging
 
+
+
+
 app = Flask(__name__)
+app.register_blueprint(apppdf)
 app.register_blueprint(appuser)
 app.register_blueprint(apptecnico)
 app.register_blueprint(appcliente)

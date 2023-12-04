@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<div class="container-fluid">
+    <form action="/addimage" method="post" enctype="multipart/form-data">
+        
+        <label>tecnico a que le pertenece la cuenta: {{usuario.tecnico_id}}</label>
+        <div class="container">
+     
+            <img id="img" src="data:image/png;base64,{{ image }}" height="100" width="100">
+         
+            <label for=""> Correo del Usuario {{usuario.email}} </label>
+            <label>rol: {{usuario.rol_id}} </label>
+            <label for="formFile" class="form-label mt-4">Default file input example</label>
+            <input class="form-control" type="file" id="inputFile" name="inputFile" enctype="multipart/form-data">
+            <button type="submit" class="btn btn-primary">C A M B I A R   F O T O</button>
+         
+          </div>
+    </form>
+</div>
+{%endblock%}

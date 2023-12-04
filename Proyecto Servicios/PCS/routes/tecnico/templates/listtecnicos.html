@@ -13,8 +13,8 @@
                         <th scope="row">id</th>
                         <th scope="row">nombre</th>
                         <th scope="row">apellido</th>
-                        <th scope="row">Editar</th>
                         <th scope="row">Consultar</th>
+                        <th scope="row">Editar</th>
                     </tr>
                 <body>
                     {% for tecnico in tecnicos %}
@@ -22,8 +22,8 @@
                         <td>{{tecnico.id}}</td>
                         <td>{{tecnico.nombre}}</td>
                         <td>{{tecnico.apellido}}</td>
-                        <td><a class="btn btn-primary" href="{{ url_for('apptecnico.detalles_tecnico', id=tecnico.id) }}">Editar</a></td>
-                        <td><a class="btn btn-primary" href="{{ url_for('apptecnico.modificar_tecnico', id=tecnico.id) }}">Consultar</a></td>
+                        <td><a class="btn btn-primary" href="{{ url_for('apptecnico.detalles_tecnico', id=tecnico.id) }}">Consultar</a></td>
+                        <td><a class="btn btn-primary" href="{{ url_for('apptecnico.modificar_tecnico', id=tecnico.id) }}">Editar</a></td>
                     </tr>
                     {% endfor %}
                 </body>

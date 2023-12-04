@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+  <a class="btn btn-primary" role="button" href="{{ url_for('appservicio.listado_servicios') }}">
+    Volver
+  </a>
+  <br />
+  <div class="row">
+    <!-- First Card -->
+    <div class="col-md-4">
+      <div class="card text-white bg-success mb-3">
+        <div class="card-header">Informacion del servicio</div>
+        <div class="card-body">
+          <body>
+            <br>
+            <h3 class="card-title">Fecha de inicio: {{servicio.registered_input}} </h3>
+            <h3 class="card-title">Id: {{servicio.id}}</h3>
+            <h3 class="card-title">Concepto: {{servicio.concepto}}</h3>
+            <h3 class="card-title">Costo: {{servicio.costo}}</h3>
+            <h3 class="card-title">Status: {{servicio.status}}</h3>
+            <h3 class="card-title">Tecnico encargado: {{servicio.tecnico_id}}</h3>
+            <h3 class="card-title">Tipo de servicio: {{servicio.tipo_servicio_id}}</h3>
+            <h3 class="card-title">Cliente: {{servicio.cliente_id}}</h3>
+
+            <a class="btn btn-primary" role="button" href="{{url_for('apppdf.generate_pdf', id=servicio.id)}}">
+              Generar PDF
+            </a>
+          </body>
+        </div>
+      </div>
+    </div>
+    <!-- Second Card -->
+    <div class="col-md-4">
+      <div class="card text-white bg-secondary mb-3">
+        <div class="card-header">Cliente</div>
+        <div class="card-body">
+          <h3 class="card-title">id: {{cliente.id}}</h3>
+            <h3 class="card-title">nombre: {{cliente.nombre}}</h3>
+            <h3 class="card-title">telefono: {{cliente.telefono}}</h3>
+            <h3 class="card-title">email: {{cliente.email}}</h3>
+            <h3 class="card-title">direccion: {{cliente.direccion}}</h3>
+            <h3 class="card-title">RFC: {{cliente.RFC}}</h3>
+            <h3 class="card-title">Tipo de cliente: {{cliente.tipo_clientes_id}}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-info mb-3">
+        <div class="card-header">Tecnico</div>
+        <div class="card-body">
+          <h3 class="card-title">id: {{tecnico.id}}</h3>
+            <h3 class="card-title">nombre: {{tecnico.nombre}}</h3>
+            <h3 class="card-title">apellido: {{tecnico.apellido}}</h3>  
+        </div>
+      </div>   
+    </div>
+  </div>
+</div>
+{% endblock %}

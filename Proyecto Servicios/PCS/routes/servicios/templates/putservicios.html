@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<div class = "container">
+  <br />
+  <form action="/modificarservicio/{{servicio.id}}" method="post" class="row g-3 needs-validation" novalidate>
+   <div class="col-md-5">
+       <label for="validationCustom03" class="form-label">Concepto </label>
+       <input type="text" class="form-control" id="concepto" name = "concepto" required placeholder="Ejemplo: camaras 4" value="{{servicio.concepto}}">
+     </div>
+   
+   <div class="col-md-4">
+     <label for="validationCustom02" class="form-label">Costo</label>
+     <input type="text" class="form-control" id="costo" placeholder="Ejemplo: 1.00" name = "costo"required value="{{servicio.costo}}">
+   </div>
+   <br />
+   
+   <div class="col-md-3">
+       <label for="validationCustom01" class="form-label">Tipo de servicio</label>
+       <input type="text" list="TP" class="form-control" id="tipo_servicio_id" placeholder="Ejemplo: INSTALACIONES" name = "tipo_servicio_id"required value="{{servicio.tipo_servicio_id}}">
+       <datalist id="TP" name = "TP">
+        {% for tipo_servicio in tipo_servicios %}
+            <option value="{{tipo_servicio.id}}" data-nombre="{{tipo_servicio.nombre}}">{{tipo_servicio.nombre}}</option>
+        {% endfor %}
+        </datalist>
+        <label id="tipo_servicio_label"></label>
+    
+   </div>
+   <div class="col-md-3">
+       <label for="validationCustom01" class="form-label">Cliente</label>
+       <input type="text" list="CI" class="form-control" id="cliente_id" placeholder="Ejemplo: Prueba1" name = "cliente_id"required value="{{servicio.cliente_id}}">
+       <datalist id="CI" name="CI">
+        {% for cliente in clientes %}
+            <option value="{{cliente.id}}" data-nombre="{{cliente.nombre}}">{{cliente.nombre}}</option>
+        {% endfor %}
+        </datalist>
+        <label id="cliente_id_label"></label>
+   </div>
+   <br>
+   <div class="col-md-3">
+    <label for="validationCustom01" class="form-label">Tecnico</label>
+    <select class="form-select" aria-label="tecnico_id"id="tecnico_id" name="tecnico_id">
+      <option selected value="{{servicio.tecnico_id}}">{{servicio.tecnico_id}}</option>
+      {% for tecnico in tecnicos %}
+        <option value="{{ tecnico.id }}">{{ tecnico.nombre }}</option>
+      {% endfor %}
+    </select>
+   </div>
+     <br />
+     <br />
+
+   <div class="col-11">
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>
+ </form>
+
+  
+</div>
+<script>
+    // Cuando el valor del campo de texto cambia
+    $('#tipo_servicio_id').on('input', function () {
+        // Obtén el valor actual del campo de texto
+        var valorTexto = $(this).val().toLowerCase();
+        
+
+        // Filtra las opciones en la lista que coinciden con el valor del campo de texto
+        $('#TP option').filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(valorTexto) > -1);
+        });
+    });
+    $('#tipo_servicio_id').change(function () {
+        var idSeleccionado = $(this).val();
+        var nombreSeleccionado = $('#TP option[value="' + idSeleccionado + '"]').data('nombre');
+        $('#tipo_servicio_label').text('tipo de servicio: ' + nombreSeleccionado);
+    });
+    // Maneja el evento de selección de una opción para establecer el valor correcto en el campo de texto
+    $('#cliente_id').on('input', function () {
+        // Obtén el valor actual del campo de texto
+        var valorTexto = $(this).val().toLowerCase();
+
+        // Filtra las opciones en la lista que coinciden con el valor del campo de texto
+        $('#CI option').filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(valorTexto) > -1);
+        });
+    });
+    $('#cliente_id').change(function () {
+        var idSeleccionado = $(this).val();
+        var nombreSeleccionado = $('#CI option[value="' + idSeleccionado + '"]').data('nombre');
+        $('#cliente_id_label').text('Cliente : ' + nombreSeleccionado);
+    });
+</script>
+
+{%endblock%}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<div class = "container">
+  <br />
+  <a class="btn btn-primary" role="button" href="{{ url_for('appuser.listado_usuarios') }}">Volver</a>
+
+  <form action="{{url_for('appuser.modificar_usuario',id = usuario.id)}}" method="post" class="row g-3 needs-validation" novalidate>
+   <div class="col-md-4">
+    <label for="exampleInputEmail1" class="form-label mt-4">Contraseña</label>
+    <input type="email" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Enter email" value="{{usuario.email}}">
+   </div>
+   <div class="col-md-6">
+    <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off" name="password" value="{{usuario.password}}">
+
+</div>
+   <br />
+   <div class="col-md-3">
+       <label for="validationCustom01" class="form-label">Tecnico</label>
+       <select class="form-select" aria-label="tecnico_id"id="tecnico_id" name="tecnico_id">
+         <option selected value="valor x">Tecnico</option>
+         {% for tecnico in tecnicos %}
+           <option value="{{ tecnico.id }}">{{ tecnico.nombre }}</option>
+         {% endfor %}
+       </select>
+   </div>
+   <div class="col-md-3">
+    <label for="validationCustom01" class="form-label">Rol</label>
+    <select class="form-select" aria-label="Roles"id="rol_id" name="rol_id">
+      <option selected value="valor x">rol</option>
+      {% for rol in roles %}
+        <option value="{{ rol.id }}">{{ rol.nombre }}</option>
+      {% endfor %}
+    </select>
+   </div>
+   <br>
+     <br />
+     <br />
+
+   <div class="col-11">
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>
+ </form>
+
+  
+</div>
+
+{%endblock%}

@@ -32,7 +32,8 @@ class User(db.Model):
     admin=db.Column(db.Boolean,nullable=False,default=False)
     tecnico_id=db.Column(db.Integer,db.ForeignKey('tecnico.id'))
     rol_id = db.Column(db.Integer,db.ForeignKey('rol.id'))
-
+    def __str__(self) -> str:
+        return f"{self.email}, {self.password}, {self.tecnico_id}, {self.rol_id}"
     def __init__(self,email,password,tecnicoid,rolid,admin=False) -> None:
         self.email=email
         self.tecnico_id = tecnicoid
@@ -48,7 +49,7 @@ class User(db.Model):
         try:
             print('USER',user_id)
             payload={
-                'exp':datetime.datetime.utcnow()+datetime.timedelta(hours=5),
+                'exp':datetime.datetime.utcnow()+datetime.timedelta(hours=6),
                 'iat':datetime.datetime.utcnow(),
                 'sub':user_id
             }
@@ -91,16 +92,19 @@ class Servicio(db.Model):
     tecnico_id=db.Column(db.Integer,db.ForeignKey('tecnico.id'))
     tipo_servicio_id=db.Column(db.Integer,db.ForeignKey('tipo_servicio.id'))
     cliente_id = db.Column(db.Integer,db.ForeignKey('cliente.id'))
+    #cliente = db.relationship('Cliente', backref=db.backref('servicios', lazy=True))
 
-    def __init__(self,concepto,costo,status,tecnico_id,tipo_servicio_id,cliente_id,id=None) -> None:
+    def __init__(self,concepto,costo,status,tecnico_id,tipo_servicio_id,cliente_id,id=None,registered_input=None) -> None:
         if id ==None:
             pass
+            self.registered_input=datetime.datetime.now()
         else:
             self.id = id
+            self.registered_input = registered_input
         self.concepto = concepto
         self.costo = costo
         self.status = status
-        self.registered_input=datetime.datetime.now()
+        
         self.tecnico_id = tecnico_id
         self.tipo_servicio_id = tipo_servicio_id
         self.cliente_id = cliente_id

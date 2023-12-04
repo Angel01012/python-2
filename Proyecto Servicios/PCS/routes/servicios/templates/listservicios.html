@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<body>
+    <div class="container">
+        <div class="col-md-12">
+            <a class="btn btn-primary"  href="{{ url_for('appservicio.agregar_servicio') }}" role="button" >
+                agregar servicio
+              </a>
+              <br>
+            <table class="table table-hover">
+                    <tr class="table-dark">
+                        <th scope="row">Concepto</th>
+                        <th scope="row">Fecha de inicio</th>
+                        <th scope="row">Costo </th>
+                        <th scope="row">Status</th>
+                        <th scope="row">Tecnico</th>
+                        <th scope="row">Tipo de servicio</th>
+                        <th scope="row">Cliente</th>
+                        <th scope="row">Consultar</th>
+                        <th scope="row">Editar</th>
+                    </tr>
+                <body>
+                    {% for servicio in servicios %}
+                    <tr class="table-dark">
+                        <td scope="row">{{servicio.concepto}}</td>
+                        <td scope="row">{{servicio.registered_input}}</td>
+                        <td scope="row">{{servicio.costo}}</td>
+                        <td scope="row">
+                            <span class="badge bg-success">{{servicio.status}}</span>
+                        </td>
+                        <td scope="row">{{servicio.tecnico_id}}</td>
+                        <td scope="row">{{servicio.tipo_servicio_id}}</td>
+                        <td scope="row">{{servicio.cliente_id}}</td>
+                        <td scope="row">
+                            <a class="btn btn-primary" href="{{ url_for('appservicio.detalle_servicio',id=servicio.id) }}">Consultar</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="{{ url_for('appservicio.modificar_servicio', id=servicio.id) }}">Editar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </body>
+
+            </table>
+            <a class="btn btn-primary"  href="{{ url_for('appservicio.descargar_csv') }}" role="button" >
+                descargar CSV
+              </a>
+        </div>
+    </div>
+    
+</body>
+{%endblock%}
